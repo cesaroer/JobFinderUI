@@ -1,3 +1,4 @@
+import 'package:curso_job_finder_app/pages/main_screen.dart';
 import 'package:curso_job_finder_app/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "JobFinder",
-      home: SplashScreen(),
+      home: MainScreen(),
       theme: ThemeData(
         primaryColor: Color(0XFF5F5FFF),
         accentColor: Color(0xFF030047),
@@ -26,6 +27,10 @@ class MyApp extends StatelessWidget {
             fontSize: 36.0,
             fontWeight: FontWeight.bold,
             color: Color(0xFF5F5FFF),
+          ),
+          bodyText1: TextStyle(
+            fontSize: 20.0,
+            color: Color(0xFFB7B7D2),
           ),
         ),
       ),
