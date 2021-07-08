@@ -1,4 +1,5 @@
 import 'package:curso_job_finder_app/components/job_carousel.dart';
+import 'package:curso_job_finder_app/components/job_list.dart';
 import 'package:curso_job_finder_app/models/company.dart';
 import 'package:curso_job_finder_app/models/job.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,37 @@ class MainScreen extends StatelessWidget {
     ),
   ];
 
+  List<Job> recentJobs = [
+    Job(
+      role: 'UX Enginner',
+      location: 'Mountain View, CA',
+      company: Company(
+        name: 'Apple',
+        urlLogo:
+            'https://i.pinimg.com/originals/1c/aa/03/1caa032c47f63d50902b9d34492e1303.jpg',
+      ),
+      isFavorite: true,
+    ),
+    Job(
+      role: 'Motion Designer',
+      location: 'New York, NY',
+      company: Company(
+        name: 'AirBnb',
+        urlLogo: 'https://menorcaaldia.com/wp-content/uploads/2018/02/air.jpg',
+      ),
+      isFavorite: true,
+    ),
+    Job(
+      role: 'Python Developer',
+      location: 'New York',
+      company: Company(
+        name: 'Amazon',
+        urlLogo:
+            'https://www.cbc-network.org/wp-content/uploads/2017/11/Amazon-icon.png',
+      ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +77,8 @@ class MainScreen extends StatelessWidget {
             _customAppBar(),
             _textHeader(context),
             _forYou(context),
+            _recent(context),
+            SizedBox(height: 60.0)
           ],
         ),
       ),
@@ -116,6 +150,35 @@ class MainScreen extends StatelessWidget {
           ),
         ),
         JobCarousel(jobs: forYouJobs),
+      ],
+    );
+  }
+
+  Widget _recent(context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(
+              left: 30.0, right: 30.0, top: 5.0, bottom: 15.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                "Recent",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              Text(
+                "See All",
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: JobList(this.recentJobs),
+        ),
       ],
     );
   }
