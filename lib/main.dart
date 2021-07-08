@@ -28,6 +28,16 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Color(0xFF5F5FFF),
           ),
+          headline3: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+          headline4: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF030047),
+          ),
           bodyText1: TextStyle(
             fontSize: 20.0,
             color: Color(0xFFB7B7D2),

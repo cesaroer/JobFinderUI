@@ -1,8 +1,40 @@
 import 'package:curso_job_finder_app/components/job_carousel.dart';
+import 'package:curso_job_finder_app/models/company.dart';
+import 'package:curso_job_finder_app/models/job.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatelessWidget {
+  List<Job> forYouJobs = [
+    Job(
+      role: 'Product Designer',
+      location: 'San Francisco, CA',
+      company: Company(
+        name: 'Google',
+        urlLogo:
+            'https://images.theconversation.com/files/93616/original/image-20150902-6700-t2axrz.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1000&fit=clip',
+      ),
+    ),
+    Job(
+      role: 'Frontend Web',
+      location: 'Miami',
+      company: Company(
+        name: 'Netflix',
+        urlLogo:
+            'https://i.pinimg.com/originals/8c/74/0b/8c740bc13bd5a0a19c24d28dff98cbdd.png',
+      ),
+    ),
+    Job(
+      role: 'Mobile Developer',
+      location: 'New York',
+      company: Company(
+        name: 'Amazon',
+        urlLogo:
+            'https://www.cbc-network.org/wp-content/uploads/2017/11/Amazon-icon.png',
+      ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +114,7 @@ class MainScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyText1,
           ),
         ),
-        JobCarousel(),
+        JobCarousel(jobs: forYouJobs),
       ],
     );
   }
