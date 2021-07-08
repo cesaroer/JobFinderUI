@@ -32,6 +32,7 @@ class MainScreen extends StatelessWidget {
         urlLogo:
             'https://www.cbc-network.org/wp-content/uploads/2017/11/Amazon-icon.png',
       ),
+      isFavorite: true,
     ),
   ];
 

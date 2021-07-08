@@ -3,12 +3,17 @@ import 'package:curso_job_finder_app/models/job.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ItemJob extends StatelessWidget {
+class ItemJob extends StatefulWidget {
   Job job;
   bool themeDark;
 
   ItemJob({this.job, this.themeDark = false});
 
+  @override
+  _ItemJobState createState() => _ItemJobState();
+}
+
+class _ItemJobState extends State<ItemJob> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +43,8 @@ class ItemJob extends StatelessWidget {
 
   BoxDecoration _boxDecoration(context) {
     return BoxDecoration(
-      color: this.themeDark ? Theme.of(context).primaryColor : Colors.white,
+      color:
+          this.widget.themeDark ? Theme.of(context).primaryColor : Colors.white,
       borderRadius: BorderRadius.circular(25.0),
       boxShadow: [
         BoxShadow(
@@ -59,7 +65,7 @@ class ItemJob extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10.0),
         child: Image.network(
-          this.job.company.urlLogo,
+          this.widget.job.company.urlLogo,
           width: 60.0,
         ),
       ),
@@ -67,9 +73,16 @@ class ItemJob extends StatelessWidget {
   }
 
   Widget _favicon() {
-    return Icon(
-      Icons.favorite_border,
-      color: this.themeDark ? Colors.white : Colors.grey,
+    return GestureDetector(
+      child: Icon(
+        this.widget.job.isFavorite ? Icons.favorite : Icons.favorite_border,
+        color: this.widget.themeDark ? Colors.white : Colors.grey,
+      ),
+      onTap: () {
+        setState(() {
+          this.widget.job.isFavorite = !this.widget.job.isFavorite;
+        });
+      },
     );
   }
 
@@ -78,15 +91,15 @@ class ItemJob extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          this.job.company.name,
+          this.widget.job.company.name,
           style: TextStyle(
             fontSize: 15.0,
-            color: this.themeDark ? Color(0XFFB7B7D2) : Colors.grey,
+            color: this.widget.themeDark ? Color(0XFFB7B7D2) : Colors.grey,
           ),
         ),
         Text(
-          this.job.role,
-          style: this.themeDark
+          this.widget.job.role,
+          style: this.widget.themeDark
               ? Theme.of(context).textTheme.headline3
               : Theme.of(context).textTheme.headline4,
         ),
@@ -100,10 +113,10 @@ class ItemJob extends StatelessWidget {
             ),
             SizedBox(width: 5.0),
             Text(
-              this.job.location,
+              this.widget.job.location,
               style: TextStyle(
                 fontSize: 15.0,
-                color: this.themeDark ? Color(0XFFB7B7D2) : Colors.grey,
+                color: this.widget.themeDark ? Color(0XFFB7B7D2) : Colors.grey,
               ),
             ),
           ],
