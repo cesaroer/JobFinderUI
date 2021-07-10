@@ -23,7 +23,6 @@ class CompactItemJob extends StatelessWidget {
               ],
             ),
             _favIcon(context),
-            SizedBox(height: 1000.0)
           ],
         ),
       ),

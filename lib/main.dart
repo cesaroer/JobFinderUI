@@ -12,7 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "JobFinder",
-      home: MainScreen(),
+      initialRoute: SplashScreen.routeName,
+      routes: {
+        MainScreen.routeName: (BuildContext context) => MainScreen(),
+        SplashScreen.routeName: (BuildContext context) => SplashScreen(),
+      },
       theme: ThemeData(
         primaryColor: Color(0XFF5F5FFF),
         accentColor: Color(0xFF030047),

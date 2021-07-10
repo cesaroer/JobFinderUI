@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatelessWidget {
+  static final String routeName = "main";
+
   List<Job> forYouJobs = [
     Job(
       role: 'Product Designer',
