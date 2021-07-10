@@ -1,4 +1,5 @@
 import 'package:curso_job_finder_app/pages/main_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -28,39 +29,39 @@ class SplashScreen extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: () {
-                //Navigator.pushReplacementNamed(context, MainScreen.routeName);
-
                 Navigator.push(
                   context,
-                  PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 800),
-                    transitionsBuilder:
-                        (context, animation, animationDuration, child) {
-                      // return ScaleTransition(
-                      //   alignment: Alignment.bottomCenter,
-                      //   child: child,
-                      //   scale: animation,
-                      // );
-
-                      return SlideTransition(
-                        child: SlideTransition(
-                          child: child,
-                          position: Tween<Offset>(
-                            begin: const Offset(1.0, 0.0),
-                            end: Offset.zero,
-                          ).animate(animation),
-                        ),
-                        position: Tween<Offset>(
-                          begin: const Offset(1.0, 0.0),
-                          end: Offset.zero,
-                        ).animate(animation),
-                      );
-                    },
-                    pageBuilder: (context, animation, animationDuration) {
-                      return MainScreen();
-                    },
+                  CupertinoPageRoute(
+                    fullscreenDialog: true,
+                    builder: (context) => MainScreen(),
                   ),
                 );
+
+                // Navigator.push(
+                //   context,
+                //   PageRouteBuilder(
+                //     transitionDuration: Duration(milliseconds: 500),
+                //     transitionsBuilder:
+                //         (context, animation, animationDuration, child) {
+                //       return SlideTransition(
+                //         child: SlideTransition(
+                //           child: child,
+                //           position: Tween<Offset>(
+                //             begin: const Offset(0.0, 0.4),
+                //             end: Offset.zero,
+                //           ).animate(animation),
+                //         ),
+                //         position: Tween<Offset>(
+                //           begin: const Offset(0.0, 0.4),
+                //           end: Offset.zero,
+                //         ).animate(animation),
+                //       );
+                //     },
+                //     pageBuilder: (context, animation, animationDuration) {
+                //       return MainScreen();
+                //     },
+                //   ),
+                // );
               },
               elevation: 10.0,
               minWidth: 170.0,

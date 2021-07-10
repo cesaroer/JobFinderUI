@@ -2,6 +2,7 @@ import 'package:curso_job_finder_app/components/job_carousel.dart';
 import 'package:curso_job_finder_app/components/job_list.dart';
 import 'package:curso_job_finder_app/models/company.dart';
 import 'package:curso_job_finder_app/models/job.dart';
+import 'package:curso_job_finder_app/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -76,7 +77,7 @@ class MainScreen extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
-            _customAppBar(),
+            _customAppBar(context),
             _textHeader(context),
             _forYou(context),
             _recent(context),
@@ -87,7 +88,7 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  Widget _customAppBar() {
+  Widget _customAppBar(context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
       child: Row(
@@ -96,7 +97,9 @@ class MainScreen extends StatelessWidget {
           IconButton(
             iconSize: 40.0,
             icon: SvgPicture.asset('assets/icons/slider.svg'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context, SplashScreen.routeName);
+            },
           ),
           Row(
             children: [
