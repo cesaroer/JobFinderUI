@@ -35,8 +35,8 @@ class CompactItemJob extends StatelessWidget {
       borderRadius: BorderRadius.circular(10.0),
       boxShadow: [
         BoxShadow(
-          color: Colors.black26,
-          offset: Offset(2.0, 2.0),
+          color: Colors.indigo.withAlpha(60),
+          offset: Offset(-1.0, 3.0),
           blurRadius: 8.0,
         ),
       ],

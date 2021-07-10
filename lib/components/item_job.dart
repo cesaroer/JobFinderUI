@@ -48,7 +48,7 @@ class _ItemJobState extends State<ItemJob> {
       borderRadius: BorderRadius.circular(25.0),
       boxShadow: [
         BoxShadow(
-          color: Colors.black45,
+          color: Colors.indigo.shade900.withAlpha(60),
           offset: Offset(4.0, 2.0),
           blurRadius: 10.0,
         )
