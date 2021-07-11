@@ -17,24 +17,27 @@ class _ItemJobState extends State<ItemJob> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 15.0, bottom: 20.0, top: 20.0),
+      padding: EdgeInsets.only(right: 15.0, bottom: 20.0, top: 20.0),
       child: Container(
         decoration: _boxDecoration(context),
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _companyLogo(),
-                  _favicon(),
-                ],
-              ),
-              _infoJobTexts(context),
-            ],
+        child: Flexible(
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: 25.0, top: 20.0, right: 25.0, bottom: 15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _companyLogo(),
+                    _favicon(),
+                  ],
+                ),
+                _infoJobTexts(context),
+              ],
+            ),
           ),
         ),
       ),
@@ -88,14 +91,12 @@ class _ItemJobState extends State<ItemJob> {
 
   Widget _infoJobTexts(context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           this.widget.job.company.name,
-          style: TextStyle(
-            fontSize: 15.0,
-            color: this.widget.themeDark ? Color(0XFFB7B7D2) : Colors.grey,
-          ),
+          style: Theme.of(context).textTheme.subtitle1,
         ),
         Text(
           this.widget.job.role,
@@ -114,10 +115,7 @@ class _ItemJobState extends State<ItemJob> {
             SizedBox(width: 5.0),
             Text(
               this.widget.job.location,
-              style: TextStyle(
-                fontSize: 15.0,
-                color: this.widget.themeDark ? Color(0XFFB7B7D2) : Colors.grey,
-              ),
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:curso_job_finder_app/components/item_job.dart';
 import 'package:curso_job_finder_app/models/job.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -23,11 +24,36 @@ class JobCarousel extends StatelessWidget {
       ),
       items: this
           .jobs
-          .map((element) => ItemJob(
+          .map(
+            (element) => _setContextMenuTo(
+              context,
+              ItemJob(
                 job: element,
                 themeDark: jobs.indexOf(element) == 0,
-              ))
+              ),
+            ),
+          )
           .toList(),
+    );
+  }
+
+  Widget _setContextMenuTo(context, Widget widget) {
+    return CupertinoContextMenu(
+      actions: [
+        CupertinoContextMenuAction(
+          child: Text("action one"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoContextMenuAction(
+          child: Text("action two"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ],
+      child: widget,
     );
   }
 }
